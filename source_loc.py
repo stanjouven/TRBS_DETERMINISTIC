@@ -5,6 +5,8 @@ def trbs(graph, obs_time, distribution):
 
     path_lengths = {}
     paths = {}
+
+    obs = np.array(list(obs_time.keys()))
     for o in obs:
         path_lengths[o], paths[o] = nx.single_source_dijkstra(graph, o)
 
