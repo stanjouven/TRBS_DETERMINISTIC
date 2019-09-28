@@ -2,7 +2,7 @@ import networkx as nx
 import numpy as np
 
 
-def ml_estimate(graph, obs_time, paths, path_lengths):
+def source_estimate(graph, obs_time, paths, path_lengths):
 
     T = {}
     var_T = {}
