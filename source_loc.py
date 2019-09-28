@@ -1,4 +1,5 @@
 import numpy as np
+import networkx as nx
 
 
 def trbs(graph, obs_time, distribution):
