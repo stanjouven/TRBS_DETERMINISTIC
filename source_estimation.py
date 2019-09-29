@@ -13,7 +13,7 @@ def source_estimate(graph, obs_time, paths, path_lengths):
             T[node].append(obs_time[obs] - path_lengths[obs][node])
         var_T[node] = np.var(T[node])
 
-
+    print('var_T', var_T)
     min_var = np.min(list(var_T.values()))
     source_candidates = list()
     ### Finds nodes with maximum likelihood
