@@ -1,5 +1,6 @@
 import numpy as np
 import networkx as nx
+import operator
 
 import TRBS.source_estimation as se
 
