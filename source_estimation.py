@@ -17,7 +17,7 @@ def source_estimate(graph, obs_time, paths, path_lengths):
     min_var = np.min(var_T.values())
     source_candidates = list()
     ### Finds nodes with maximum likelihood
-    for src, value in posterior.items():
+    for src, value in min_var.items():
         if np.isclose(value, min_var, atol= 1e-08):
             source_candidates.append(src)
 
