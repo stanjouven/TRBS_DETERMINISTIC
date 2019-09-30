@@ -15,6 +15,7 @@ def trbs(graph, obs_time, distribution):
         path_lengths[o], paths[o] = nx.single_source_dijkstra(graph, o)
         print('path_lengths', o, ' = ', len(path_lengths[o]))
         print('nodes', len(list(graph.nodes())))
+        print('path_lengths tab', path_lengths[o])
         i = i+1
     print('ITERATIONS = ', i)
 
