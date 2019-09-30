@@ -17,7 +17,7 @@ def trbs(graph, obs_time, distribution):
     i = 0
     for o in obs:
         print('******************** isolates ', iso_nodes)
-        path_lengths[o], paths[o] = nx.single_source_dijkstra(graph, o)
+        path_lengths[o] = nx.single_source_dijkstra_path_length(graph, o)
         print('path_lengths', o, ' = ', len(path_lengths[o]))
         print('nodes', len(list(graph.nodes())))
         print('path_lengths tab', sorted(path_lengths[o].items(), key=operator.itemgetter(0), reverse=True))
@@ -28,7 +28,7 @@ def trbs(graph, obs_time, distribution):
 
 
     ### Run the estimation
-    s_est, likelihoods = se.source_estimate(graph, obs_time, paths, path_lengths)
+    s_est, likelihoods = se.source_estimate(graph, obs_time, path_lengths)
 
     ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=True)
 
