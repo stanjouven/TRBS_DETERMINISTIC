@@ -26,7 +26,7 @@ def trbs(graph, obs_time, distribution):
 
     path_lengths = {}
     obs = np.array(list(obs_time.keys()))
-    for o in in obs:
+    for o in obs:
         path_lengths[o] = preprocess(o, graph, distribution)
     ### Run the estimation
     s_est, likelihoods = se.source_estimate(graph, obs_time)
