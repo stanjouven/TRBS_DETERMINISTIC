@@ -6,7 +6,6 @@ def source_estimate(graph, obs_time, paths, path_lengths):
 
     T = {}
     var_T = {}
-    print('path length', len(path_lengths))
     for node in list(graph.nodes()):
         T.setdefault(node, [])
         for obs in np.array(list(obs_time.keys())):
