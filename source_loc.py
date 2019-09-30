@@ -29,8 +29,12 @@ def trbs(graph, obs_time, distribution):
     for o in obs:
         path_lengths[o] = preprocess(o, graph, distribution)
     ### Run the estimation
-    s_est, likelihoods = se.source_estimate(graph, obs_time)
+    s_est, likelihoods = se.source_estimate(graph, obs_time, path_lengths)
 
+    ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=True)
+    print('ranked', ranked)
+
+    return (s_est, ranked)
 
 def preprocess(observer, graph, distr):
     ### Initialization of the edge delay
