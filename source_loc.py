@@ -13,6 +13,7 @@ def trbs(graph, obs_time, distribution):
     for o in obs:
         path_lengths[o], paths[o] = nx.single_source_dijkstra(graph, o)
         print('path_lengths', o, ' = ', len(path_lengths[o]))
+        print('nodes', len(list(graph.nodes())))
 
     ### Run the estimation
     s_est, likelihoods = se.source_estimate(graph, obs_time, paths, path_lengths)
