@@ -43,6 +43,4 @@ def preprocess(observer, graph, distr):
         graph[u][v]['weight'] = abs(distr.rvs())
 
     ### Computation of the shortest paths from every observer to all other nodes
-    path_lengths = nx.single_source_dijkstra_path_length(graph, observer)
-
-    return path_lengths
+    return  nx.single_source_dijkstra_path_length(graph, observer)
