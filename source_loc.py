@@ -16,9 +16,11 @@ def trbs(graph, obs_time, distribution):
         print('path_lengths', o, ' = ', len(path_lengths[o]))
         print('nodes', len(list(graph.nodes())))
         print('path_lengths tab', sorted(path_lengths[o].items(), key=operator.itemgetter(0), reverse=True))
-        print('mean', np.min(list(path_lengths[o].values())))
+        print('mean', np.min(list(path_lengths[o]))
+        print('OBS', len(obs))
         i = i+1
     print('ITERATIONS = ', i)
+
 
     ### Run the estimation
     s_est, likelihoods = se.source_estimate(graph, obs_time, paths, path_lengths)
