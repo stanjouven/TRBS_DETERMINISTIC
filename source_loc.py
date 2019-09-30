@@ -15,14 +15,14 @@ def trbs(graph, obs_time, distribution):
         path_lengths[o], paths[o] = nx.single_source_dijkstra(graph, o)
         print('path_lengths', o, ' = ', len(path_lengths[o]))
         print('nodes', len(list(graph.nodes())))
-        print('path_lengths tab', sorted(path_lengths[o].items(), key=operator.itemgetter(1), reverse=True))
+        print('path_lengths tab', sorted(path_lengths[o].items(), key=operator.itemgetter(0), reverse=True))
         i = i+1
     print('ITERATIONS = ', i)
 
     ### Run the estimation
     s_est, likelihoods = se.source_estimate(graph, obs_time, paths, path_lengths)
 
-    ranked = sorted(likelihoods.items(), key=operator.itemgetter(0), reverse=True)
+    ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=True)
 
     return (s_est, ranked)
 
