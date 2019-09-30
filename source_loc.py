@@ -9,11 +9,11 @@ def trbs(graph, obs_time, distribution):
     path_lengths = {}
     paths = {}
 
-
+    isolates = nx.isolates(graph)
     obs = np.array(list(obs_time.keys()))
     i = 0
     for o in obs:
-        print('******************** isolates ', nx.isolates(graph))
+        print('******************** isolates ', isolates)
         path_lengths[o], paths[o] = nx.single_source_dijkstra(graph, o)
         print('path_lengths', o, ' = ', len(path_lengths[o]))
         print('nodes', len(list(graph.nodes())))
