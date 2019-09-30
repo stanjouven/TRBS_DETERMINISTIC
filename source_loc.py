@@ -9,6 +9,8 @@ def trbs(graph, obs_time, distribution):
     path_lengths = {}
     paths = {}
 
+    print('******************** isolates ', nx.isolates(graph))
+
     obs = np.array(list(obs_time.keys()))
     i = 0
     for o in obs:
