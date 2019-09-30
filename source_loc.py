@@ -3,7 +3,7 @@ import networkx as nx
 import operator
 
 import TRBS.source_estimation as se
-'''
+
 def trbs(graph, obs_time, distribution):
 
     path_lengths = {}
@@ -20,8 +20,8 @@ def trbs(graph, obs_time, distribution):
     print('ranked', ranked)
 
     return (s_est, ranked)
-'''
 
+'''
 def trbs(graph, obs_time, distribution):
 
     path_lengths = {}
@@ -44,3 +44,4 @@ def preprocess(observer, graph, distr):
 
     ### Computation of the shortest paths from every observer to all other nodes
     return  nx.single_source_dijkstra_path_length(graph, observer)
+'''
