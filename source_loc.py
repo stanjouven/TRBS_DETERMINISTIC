@@ -23,7 +23,7 @@ def trbs(graph, obs_time, distribution):
         temp = []
         for l in path_lengths[o].values() :
             temp.append(len(l))
-        print('path_lengths', o, ' = ', np.mean(temp)
+        print('path_lengths', o, ' = ', np.mean(temp))
         #print('path_lengths tab', sorted(path_lengths[o].items(), key=operator.itemgetter(0), reverse=True))
         #print('mean', np.min(path_lengths[o]))
         i = i+1
