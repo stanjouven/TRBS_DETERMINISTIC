@@ -20,7 +20,10 @@ def trbs(graph, obs_time, distribution):
     print('nodes', len(list(graph.nodes())))
     for o in obs:
         path_lengths[o] = nx.single_source_dijkstra_path_length(graph, o)
-        print('path_lengths', o, ' = ', len(path_lengths[o]))
+        temp = []
+        for l in path_lengths[o].values() :
+            temp.append(len(l))
+        print('path_lengths', o, ' = ', np.mean(temp)
         #print('path_lengths tab', sorted(path_lengths[o].items(), key=operator.itemgetter(0), reverse=True))
         #print('mean', np.min(path_lengths[o]))
         i = i+1
