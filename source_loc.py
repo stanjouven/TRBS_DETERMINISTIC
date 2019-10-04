@@ -43,7 +43,7 @@ def trbs(graph, obs_time, distribution):
 
 def trbs(graph, obs_time, distribution):
 
-    largest_graph_cc = max(nx.connected_components(G), key=len)
+    largest_graph_cc = max(nx.connected_components(graph), key=len)
     obs_time_filt = observer_filtering(obs_time, largest_graph_cc)
     obs_filt = np.array(list(obs_time.keys()))
     path_lengths = {}
