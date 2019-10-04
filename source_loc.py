@@ -48,6 +48,7 @@ def trbs(graph, obs_time, distribution):
     obs_filt = np.array(list(obs_time.keys()))
     path_lengths = {}
     print("graph component", list(largest_graph_cc.nodes()))
+    print("LENGTH COMPONENET", len(list(largest_graph_cc.nodes())))
     print("obs time", list(obs_time.keys()))
     print("obs time filt", obs_filt)
 
