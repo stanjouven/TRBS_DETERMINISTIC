@@ -83,6 +83,6 @@ def preprocess(observer, graph, distr):
 def observer_filtering(obs_time, largest_graph_cc):
     obs = np.array(list(obs_time.keys()))
     for o in obs:
-        if !largest_graph_cc.has_node(o):
+        if not largest_graph_cc.has_node(o):
             obs_time.delete(o)
     return obs_time
