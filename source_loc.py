@@ -47,10 +47,10 @@ def trbs(graph, obs_time, distribution):
     obs_time_filt = observer_filtering(obs_time, largest_graph_cc)
     obs_filt = np.array(list(obs_time.keys()))
     path_lengths = {}
-    print("graph component", list(largest_graph_cc.nodes()))
-    print("LENGTH COMPONENET", len(list(largest_graph_cc.nodes())))
-    print("obs time", list(obs_time.keys()))
-    print("obs time filt", obs_filt)
+    #print("graph component", list(largest_graph_cc.nodes()))
+    #print("LENGTH COMPONENET", len(list(largest_graph_cc.nodes())))
+    #print("obs time", list(obs_time.keys()))
+    #print("obs time filt", obs_filt)
 
     for o in obs_filt:
         path_lengths[o] = preprocess(o, largest_graph_cc, distribution)
@@ -58,7 +58,7 @@ def trbs(graph, obs_time, distribution):
     s_est, likelihoods = se.source_estimate(largest_graph_cc, obs_time_filt, path_lengths)
 
     ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=True)
-    print('ranked', ranked)
+    #print('ranked', ranked)
 
     return (s_est, ranked)
 
