@@ -49,7 +49,7 @@ def trbs(graph, obs_time, distribution):
     path_lengths = {}
     print("graph component", list(largest_graph_cc.nodes()))
     print("obs time", list(obs_time.keys()))
-    print("obs time filt", list(obs_filt.keys()))
+    print("obs time filt", obs_filt)
 
     for o in obs_filt:
         path_lengths[o] = preprocess(o, largest_graph_cc, distribution)
