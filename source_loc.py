@@ -5,52 +5,18 @@ import operator
 import TRBS.source_estimation as se
 
 '''
-def trbs(graph, obs_time, distribution):
-
-    path_lengths = {}
-    paths = {}
-    iso_nodes = []
-    isolates = nx.isolates(graph)
-    for node in list(graph.nodes()):
-        if node in isolates:
-            iso_nodes.append(node)
-    obs = np.array(list(obs_time.keys()))
-    i = 0
-    print('******************** isolates ', iso_nodes)
-    print('OBS', len(obs))
-    print('nodes', len(list(graph.nodes())))
-    for o in obs:
-        path_lengths[o] = nx.single_source_dijkstra_path_length(graph, o)
-        temp = []
-        #print('path_lengths', o, ' = ', np.mean(list(path_lengths[o].values())))
-        #print('path_lengths tab', sorted(path_lengths[o].items(), key=operator.itemgetter(0), reverse=True))
-        #print('mean', np.min(path_lengths[o]))
-        i = i+1
-        print('path_lengths', o, ' = ', len(path_lengths[o]))
-        print('path_lengths tab', sorted(path_lengths[o].items(), key=operator.itemgetter(0), reverse=True))
-        #print('mean', np.min(path_lengths[o]))
-        print("current obs :", o)
-    print('ITERATIONS = ', i)
-
-
-    ### Run the estimation
-    s_est, likelihoods = se.source_estimate(graph, obs_time, path_lengths)
-
-    ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=True)
-
-    return (s_est, ranked)
+Enables to call functions to find the source estimation of the algorithm
+PARAMETERS:
+    graph: the nx graph used
+    obs_time: dictionnary node -> time of the infection
+    distribution: distribution used 
 '''
-
 def trbs(graph, obs_time, distribution):
 
     largest_graph_cc = graph.subgraph(max(nx.connected_components(graph), key=len))
     obs_time_filt = observer_filtering(obs_time, largest_graph_cc)
     obs_filt = np.array(list(obs_time.keys()))
     path_lengths = {}
-    #print("graph component", list(largest_graph_cc.nodes()))
-    #print("LENGTH COMPONENET", len(list(largest_graph_cc.nodes())))
-    #print("obs time", list(obs_time.keys()))
-    #print("obs time filt", obs_filt)
 
     for o in obs_filt:
         path_lengths[o] = preprocess(o, largest_graph_cc, distribution)
@@ -64,6 +30,10 @@ def trbs(graph, obs_time, distribution):
 
 '''
 Apply the given distribution to the edge of the graph.
+PARAMETERS:
+    observer: the observer node
+    graph: the nx graph used
+    distr: the distribution used
 Return dictionnary: node -> time to go from that node to the given observer
 '''
 def preprocess(observer, graph, distr):
@@ -77,9 +47,11 @@ def preprocess(observer, graph, distr):
 
 '''
  Check if every observer is part of the largest graph component
- OBS_TIME: dictionnary: node -> time of infection
- LARGEST_GRAPH_CC: largest component of the graph
- RETURN the obs_time dictionnary without the ones that are not part of largest_graph_cc
+ PARAMETERS:
+    OBS_TIME: dictionnary: node -> time of infection
+    LARGEST_GRAPH_CC: largest component of the graph
+ RETURN
+    the obs_time dictionnary without the ones that are not part of largest_graph_cc
 '''
 def observer_filtering(obs_time, largest_graph_cc):
     obs = np.array(list(obs_time.keys()))
