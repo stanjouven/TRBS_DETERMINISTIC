@@ -25,7 +25,7 @@ def trbs(graph, obs_time_filt, distribution):
     ### Run the estimation
     s_est, likelihoods = se.source_estimate(graph, obs_time_filt, path_lengths)
     ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=False)
-    #print('ranked', ranked)
+    print('ranked', ranked)
 
     return (s_est, ranked)
 
