@@ -13,7 +13,7 @@ PARAMETERS:
 '''
 def trbs(graph, obs_time_filt, distribution):
 
-    print('obs time': obs_time_filt)
+    print('obs time', obs_time_filt)
     for node in list(graph.nodes()):
         print('node', node)
         edgs = list(node.edges())
