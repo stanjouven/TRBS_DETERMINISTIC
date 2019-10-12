@@ -14,12 +14,6 @@ PARAMETERS:
 def trbs(graph, obs_time_filt, distribution):
 
     print('obs time', obs_time_filt)
-    for node in list(graph.nodes()):
-        print('node', node)
-        edgs = list(node.edges())
-        for es in edgs:
-            print('edge', es)
-            print('weight', graph[node][es])
 
     #largest_graph_cc = graph.subgraph(max(nx.connected_components(graph), key=len))
     #obs_time_filt = observer_filtering(obs_time, largest_graph_cc)
@@ -48,6 +42,7 @@ def preprocess(observer, graph, distr):
     edges = graph.edges()
     for (u, v) in edges:
         graph[u][v]['weight'] = abs(distr.rvs())
+        print('u: ',u 'v: ', v, graph[u][v]['weight'])
 
     ### Computation of the shortest paths from every observer to all other nodes
     return  nx.single_source_dijkstra_path_length(graph, observer)
