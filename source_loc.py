@@ -13,6 +13,14 @@ PARAMETERS:
 '''
 def trbs(graph, obs_time_filt, distribution):
 
+    print('obs time': obs_time_filt)
+    for node in list(graph.nodes()):
+        print('node', node)
+        edgs = list(node.edges())
+        for es in edgs:
+            print('edge', es)
+            print('weight', graph[node][es])
+
     #largest_graph_cc = graph.subgraph(max(nx.connected_components(graph), key=len))
     #obs_time_filt = observer_filtering(obs_time, largest_graph_cc)
     obs_filt = np.array(list(obs_time_filt.keys()))
@@ -22,7 +30,6 @@ def trbs(graph, obs_time_filt, distribution):
         path_lengths[o] = preprocess(o, graph, distribution)
     ### Run the estimation
     s_est, likelihoods = se.source_estimate(graph, obs_time_filt, path_lengths)
-
     ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=False)
     #print('ranked', ranked)
 
