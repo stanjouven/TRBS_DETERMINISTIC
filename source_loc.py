@@ -24,9 +24,6 @@ def trbs(graph, obs_time_filt, distribution):
         path_lengths[o] = preprocess(o, graph, distribution)
         #print('path_lengths', o, '= ', path_lengths[o])
 
-    edges = graph.edges()
-    for (u, v) in edges:
-        print(graph[u][v]['weight'])
     ### Run the estimation
     s_est, likelihoods = se.source_estimate(graph, obs_time_filt, path_lengths)
     ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=False)
