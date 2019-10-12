@@ -9,19 +9,19 @@ Enables to call functions to find the source estimation of the algorithm
 PARAMETERS:
     graph: the nx graph used
     obs_time: dictionnary node -> time of the infection
-    distribution: distribution used 
+    distribution: distribution used
 '''
-def trbs(graph, obs_time, distribution):
+def trbs(graph, obs_time_filt, distribution):
 
-    largest_graph_cc = graph.subgraph(max(nx.connected_components(graph), key=len))
-    obs_time_filt = observer_filtering(obs_time, largest_graph_cc)
-    obs_filt = np.array(list(obs_time.keys()))
+    #largest_graph_cc = graph.subgraph(max(nx.connected_components(graph), key=len))
+    #obs_time_filt = observer_filtering(obs_time, largest_graph_cc)
+    obs_filt = np.array(list(obs_time_filt.keys()))
     path_lengths = {}
 
     for o in obs_filt:
-        path_lengths[o] = preprocess(o, largest_graph_cc, distribution)
+        path_lengths[o] = preprocess(o, graph, distribution)
     ### Run the estimation
-    s_est, likelihoods = se.source_estimate(largest_graph_cc, obs_time_filt, path_lengths)
+    s_est, likelihoods = se.source_estimate(graph, obs_time_filt, path_lengths)
 
     ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=False)
     #print('ranked', ranked)
