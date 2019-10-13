@@ -40,10 +40,10 @@ Return dictionnary: node -> time to go from that node to the given observer
 '''
 def preprocess(observer, graph, distr):
     ### Initialization of the edge delay
-    #edges = graph.edges()
-    #for (u, v) in edges:
-    #    graph[u][v]['weight'] = abs(distr.rvs())
-    #    #print('u: ',u, 'v: ', v, graph[u][v]['weight'])
+    edges = graph.edges()
+    for (u, v) in edges:
+        graph[u][v]['weight'] = abs(distr.rvs())
+        #print('u: ',u, 'v: ', v, graph[u][v]['weight'])
 
     ### Computation of the shortest paths from every observer to all other nodes
     return  nx.single_source_dijkstra_path_length(graph, observer)
