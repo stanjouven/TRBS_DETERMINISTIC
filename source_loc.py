@@ -42,7 +42,7 @@ def preprocess(observer, graph, distr):
     ### Initialization of the edge delay
     edges = graph.edges()
     for (u, v) in edges:
-        graph[u][v]['weight'] = distr.rvs()
+        graph[u][v]['weight'] = abs(distr.rvs())
         #print('u: ',u, 'v: ', v, graph[u][v]['weight'])
 
     ### Computation of the shortest paths from every observer to all other nodes
