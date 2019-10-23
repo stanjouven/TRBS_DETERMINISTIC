@@ -3,7 +3,8 @@ import numpy as np
 
 
 def source_estimate(graph, obs_time, path_lengths):
-
+    print('graph , ' list(graph.nodes()))
+    print('path length ', path_lengths)
     T = {}
     var_T = {}
     for node in list(graph.nodes()):
@@ -16,7 +17,7 @@ def source_estimate(graph, obs_time, path_lengths):
 
     min_var = np.min(list(var_T.values()))
     source_candidates = list()
-    ### Finds nodes with maximum likelihood
+    ### Find nodes with maximum likelihood
     for src, value in var_T.items():
         if np.isclose(value, min_var, atol= 1e-08):
             source_candidates.append(src)
