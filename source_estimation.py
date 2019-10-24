@@ -3,8 +3,8 @@ import numpy as np
 
 
 def source_estimate(graph, obs_time, path_lengths):
-    print('path length ', path_lengths)
-    print('obs ', list(obs_time.keys()))
+    #print('path length ', path_lengths)
+    #print('obs ', list(obs_time.keys()))
     T = {}
     var_T = {}
     for node in list(graph.nodes()):
