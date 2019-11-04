@@ -2,7 +2,7 @@ import numpy as np
 import networkx as nx
 import operator
 
-import TRBS.source_estimation as se
+import TRBS_DETERMINISTIC.source_estimation as se
 
 '''
 Enables to call functions to find the source estimation of the algorithm
@@ -11,7 +11,7 @@ PARAMETERS:
     obs_time: dictionnary node -> time of the infection
     distribution: distribution used
 '''
-def trbs(graph, obs_time_filt, distribution):
+def trbs_deterministic(graph, obs_time_filt, distribution):
 
     #print('obs time', obs_time_filt)
 
