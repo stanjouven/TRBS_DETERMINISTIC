@@ -2,14 +2,14 @@ import networkx as nx
 import numpy as np
 
 
-def source_estimate(graph, obs_time, path_lengths):
+def source_estimate(graph, obs_time, path_lengths, mu):
     T = {}
     var_T = {}
     for node in list(graph.nodes()):
         T.setdefault(node, [])
         for obs in np.array(list(obs_time.keys())):
             a = path_lengths[obs][node]
-            T[node].append(obs_time[obs] - path_lengths[obs][node])
+            T[node].append(obs_time[obs] - mu*path_lengths[obs][node])
         var_T[node] = np.var(T[node])
 
     min_var = np.min(list(var_T.values()))
