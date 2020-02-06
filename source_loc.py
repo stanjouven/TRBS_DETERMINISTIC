@@ -24,7 +24,6 @@ def trbs_deterministic(graph, obs_time_filt, distribution):
         path_lengths[o] = nx.single_source_dijkstra_path_length(graph, o)
 
     ### Run the estimation
-    s_est, likelihoods = se.source_estimate(graph, obs_time_filt, path_lengths, distribution.mean())
-    ranked = sorted(likelihoods.items(), key=operator.itemgetter(1), reverse=False)
+    s_est, scores = se.source_estimate(graph, obs_time_filt, path_lengths, distribution.mean())
 
-    return (s_est, ranked)
+    return (s_est, scores)

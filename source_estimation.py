@@ -10,7 +10,7 @@ PARAMETERS:
     mu: mean of the distribution
 RETURN:
     source_candidates: source(s) estimation
-    var_T: dictionnary: {node: var} for every node 
+    var_T: dictionnary: {node: var} for every node
 '''
 def source_estimate(graph, obs_time, path_lengths, mu):
     T = {}
@@ -22,11 +22,7 @@ def source_estimate(graph, obs_time, path_lengths, mu):
             T[node].append(obs_time[obs] - mu*path_lengths[obs][node])
         var_T[node] = np.var(T[node])
 
-    min_var = np.min(list(var_T.values()))
-    source_candidates = list()
-    ### Find nodes with maximum likelihood
-    for src, value in var_T.items():
-        if np.isclose(value, min_var, atol= 1e-08):
-            source_candidates.append(src)
-    #print('source_candidates = ', source_candidates)
-    return source_candidates, var_T
+    scores = sorted(var_T.items(), key=operator.itemgetter(1), reverse=False)
+    source_candidate = list(scores.keys())[0]
+
+    return source_candidate, scores
