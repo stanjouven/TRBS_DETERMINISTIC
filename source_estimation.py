@@ -23,6 +23,6 @@ def source_estimate(graph, obs_time, path_lengths, mu):
         var_T[node] = np.var(T[node])
 
     scores = sorted(var_T.items(), key=operator.itemgetter(1), reverse=False)
-    source_candidate = list(scores.keys())[0]
+    source_candidate = scores[0][0]
 
     return source_candidate, scores
